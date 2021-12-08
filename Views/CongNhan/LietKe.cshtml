@@ -1,0 +1,29 @@
+﻿@model List<object>
+@{
+    ViewData["Title"] = "Liệt kê thông tin nhân viên có số triệu chứng";
+}
+<table border="1">
+    <tr>
+        <th>Tên Công nhân</th>
+        <th>Năm sinh</th>
+        <th>Nước về</th>
+        <th>Số triệu chứng</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.GetType().GetProperty("tenCN").GetValue(item, null)
+            </td>
+            <td>
+                @item.GetType().GetProperty("NamSinh").GetValue(item, null)
+            </td>
+            <td>
+                @item.GetType().GetProperty("NuocVe").GetValue(item, null)
+            </td>
+            <td>
+                @item.GetType().GetProperty("SoTC").GetValue(item, null)
+            </td>
+        </tr>
+    }
+</table>
